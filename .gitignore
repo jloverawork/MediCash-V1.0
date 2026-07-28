@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+dist/
+build/
+.expo/
+.expo-shared/
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# IDE and System files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Server Uploads
+server/uploads/*
+!server/uploads/.gitkeep

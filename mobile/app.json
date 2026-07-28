@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "MediCash",
+    "slug": "medicash-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#0D9488"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0D9488"
+      }
+    },
+    "plugins": [
+      "expo-status-bar"
+    ]
+  }
+}
