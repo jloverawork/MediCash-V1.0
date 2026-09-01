@@ -148,6 +148,23 @@ export default function PatientPaymentsView({ user }) {
 
           <div>
             <label className="block text-[11px] font-bold text-slate-700 mb-1">
+              Método de Pago Utilizado *
+            </label>
+            <select
+              value={paymentMethod}
+              onChange={(e) => setPaymentMethod(e.target.value)}
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs text-slate-900 focus:outline-none focus:border-teal-600 font-medium"
+            >
+              <option value="TRANSFERENCIA_BANESCO">Transferencia Banesco</option>
+              <option value="PAGO_MOVIL">Pago Móvil</option>
+              <option value="ZELLE">Zelle USD</option>
+              <option value="TRANSFERENCIA_MERCANTIL">Transferencia Banco Mercantil</option>
+              <option value="EFECTIVO_USD">Efectivo USD (Caja Clínica)</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-[11px] font-bold text-slate-700 mb-1">
               Número de Referencia Bancario *
             </label>
             <input

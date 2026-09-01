@@ -8,10 +8,11 @@ import CreditCalculator from './CreditCalculator';
 import MedicalFormWithUpload from './MedicalFormWithUpload';
 import RequestStatusTracker from './RequestStatusTracker';
 import PatientPaymentsView from './PatientPaymentsView';
+import PatientProfileView from './PatientProfileView';
 
 export default function MobileContainer() {
   const { user, logout } = useAuth();
-  const [activeTab, setActiveTab] = useState('new_request'); // 'new_request' | 'my_requests' | 'my_payments'
+  const [activeTab, setActiveTab] = useState('new_request'); // 'new_request' | 'my_requests' | 'my_payments' | 'profile'
   const [step, setStep] = useState(1); // 1: Specialty, 2: Clinic, 3: Doctor, 4: Calculator, 5: Medical Form & Upload
 
   // Catalog State
@@ -230,6 +231,8 @@ export default function MobileContainer() {
           <RequestStatusTracker requests={userRequests} onRefresh={fetchMyRequests} />
         ) : activeTab === 'my_payments' ? (
           <PatientPaymentsView user={user} />
+        ) : activeTab === 'profile' ? (
+          <PatientProfileView user={user} onLogout={logout} />
         ) : (
           <div className="space-y-5">
             {/* Step Progress Indicator */}
@@ -423,11 +426,11 @@ export default function MobileContainer() {
       </div>
 
       {/* Bottom Navigation Bar */}
-      <div className="bg-white border-t border-slate-200 px-6 py-3 flex items-center justify-around shrink-0 shadow-sm">
+      <div className="bg-white border-t border-slate-200 px-4 py-2.5 flex items-center justify-around shrink-0 shadow-sm">
         <button
           onClick={() => setActiveTab('new_request')}
           className={`flex flex-col items-center gap-1 transition ${
-            activeTab === 'new_request' ? 'text-teal-700 font-bold' : 'text-slate-400 hover:text-slate-600'
+            activeTab === 'new_request' ? 'text-teal-700 font-black' : 'text-slate-400 hover:text-slate-600'
           }`}
         >
           <FilePlus className="w-5 h-5" />
@@ -440,7 +443,7 @@ export default function MobileContainer() {
             fetchMyRequests();
           }}
           className={`flex flex-col items-center gap-1 transition relative ${
-            activeTab === 'my_requests' ? 'text-teal-700 font-bold' : 'text-slate-400 hover:text-slate-600'
+            activeTab === 'my_requests' ? 'text-teal-700 font-black' : 'text-slate-400 hover:text-slate-600'
           }`}
         >
           <ClipboardList className="w-5 h-5" />
@@ -453,11 +456,21 @@ export default function MobileContainer() {
         <button
           onClick={() => setActiveTab('my_payments')}
           className={`flex flex-col items-center gap-1 transition ${
-            activeTab === 'my_payments' ? 'text-teal-700 font-bold' : 'text-slate-400 hover:text-slate-600'
+            activeTab === 'my_payments' ? 'text-teal-700 font-black' : 'text-slate-400 hover:text-slate-600'
           }`}
         >
           <CreditCard className="w-5 h-5" />
           <span className="text-[10px]">Mis Pagos</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('profile')}
+          className={`flex flex-col items-center gap-1 transition ${
+            activeTab === 'profile' ? 'text-teal-700 font-black' : 'text-slate-400 hover:text-slate-600'
+          }`}
+        >
+          <User className="w-5 h-5" />
+          <span className="text-[10px]">Mi Perfil</span>
         </button>
       </div>
     </div>
