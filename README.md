@@ -1,15 +1,14 @@
-Frontend
+Frontend - React
 
 npm install
 
 npm run dev
 
-Backend
+Backend - Django
 
-npm install
+cd c:\Projects\MediCash\server
+.\venv\Scripts\python run_server.py
 
-npm start
-
-Mobile
+Mobile - React Native
 
 npx expo start --tunnel
