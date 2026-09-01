@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 package-lock.json
+venv/
+__pycache__/
+*.pyc
 
 # Build outputs
 dist/
@@ -23,3 +26,4 @@ Thumbs.db
 # Server Uploads
 server/uploads/*
 !server/uploads/.gitkeep
+
