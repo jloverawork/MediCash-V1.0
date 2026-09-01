@@ -4,7 +4,7 @@ import { Platform } from 'react-native';
 // For Android Emulator, 10.0.2.2 points to localhost.
 // For iOS Simulator or web, localhost works directly.
 
-const LOCAL_PC_IP = '192.168.1.15'; // IP de tu computadora en la red Wi-Fi local
+const LOCAL_PC_IP = '192.168.1.13'; // IP red Wi-Fi local
 
 export const getApiBaseUrl = () => {
   if (Platform.OS === 'android') {

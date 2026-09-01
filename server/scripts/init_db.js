@@ -4,13 +4,13 @@ const bcrypt = require('bcryptjs');
 const dbConfig = {
   user: process.env.DB_USER || 'postgres',
   host: process.env.DB_HOST || '127.0.0.1',
-  password: process.env.DB_PASSWORD || '123456798',
+  password: process.env.DB_PASSWORD || 'P0stgr3sql',
   port: parseInt(process.env.DB_PORT || '5432', 10),
 };
 
 async function initDatabase() {
   console.log('🔄 Conectando a PostgreSQL para verificar la base de datos MediCash...');
-  
+
   // Connect to default postgres DB to ensure MediCash database exists
   const rootClient = new Client({ ...dbConfig, database: 'postgres' });
   try {
@@ -278,7 +278,7 @@ async function initDatabase() {
     const patientRes = await dbClient.query("SELECT id FROM users WHERE email = 'carlos.mendoza@email.com'");
     if (patientRes.rows.length > 0) {
       const patientId = patientRes.rows[0].id;
-      
+
       let reqRes = await dbClient.query("SELECT id FROM credit_requests WHERE patient_id = $1", [patientId]);
       let requestId;
       if (reqRes.rowCount === 0) {
