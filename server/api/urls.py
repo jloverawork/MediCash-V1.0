@@ -11,6 +11,7 @@ urlpatterns = [
 
     # Catalog routes
     path('catalog/specialties', views.specialties_view, name='specialties'),
+    path('catalog/services', views.services_view, name='services'),
     path('catalog/clinics', views.clinics_view, name='clinics'),
     path('catalog/doctors', views.doctors_view, name='doctors'),
 

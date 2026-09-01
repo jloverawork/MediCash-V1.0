@@ -1,5 +1,5 @@
 import React from 'react';
-import { Brain, HeartPulse, Bone, Stethoscope, Activity, Sparkles, ChevronRight, ShieldCheck } from 'lucide-react';
+import { Brain, HeartPulse, Bone, Stethoscope, Activity, UserCheck, Sparkles, ChevronRight, ShieldCheck } from 'lucide-react';
 
 const iconMap = {
   Brain,
@@ -7,6 +7,7 @@ const iconMap = {
   Bone,
   Stethoscope,
   Activity,
+  UserCheck
 };
 
 export default function SpecialtyList({ specialties, selectedSpecialty, onSelectSpecialty }) {

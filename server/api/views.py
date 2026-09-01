@@ -161,16 +161,93 @@ def login_view(request):
 # ==========================================
 # CATALOG VIEWS
 # ==========================================
+DEFAULT_SPECIALTIES = [
+    {
+        'id': 1,
+        'name': 'Medicina Interna',
+        'description': 'Evaluación integral, diagnóstico y tratamiento de enfermedades del adulto y afecciones crónicas.',
+        'icon': 'Stethoscope',
+        'is_featured': True
+    },
+    {
+        'id': 2,
+        'name': 'Neurocirugía',
+        'description': 'Intervenciones quirúrgicas complejas de cerebro, columna vertebral y sistema nervioso central.',
+        'icon': 'Brain',
+        'is_featured': True
+    },
+    {
+        'id': 3,
+        'name': 'Traumatología',
+        'description': 'Cirugía articular, reparación ósea, ligamentos, reemplazos protésicos y traumatología ortopédica.',
+        'icon': 'Bone',
+        'is_featured': True
+    },
+    {
+        'id': 4,
+        'name': 'Psicología',
+        'description': 'Evaluación neuropsicológica, terapia clínica especializada y acompañamiento de salud mental.',
+        'icon': 'UserCheck',
+        'is_featured': False
+    }
+]
+
+DEFAULT_SERVICES = [
+    {
+        'id': 101,
+        'name': 'Perfil 20 (Laboratorio)',
+        'category': 'Laboratorio Clínico',
+        'description': 'Hematología completa, química sanguínea, perfil lipídico, glucosa, urea, creatinina y funcional renal/hepático.',
+        'estimated_cost': 45.00,
+        'icon': 'FlaskConical'
+    },
+    {
+        'id': 102,
+        'name': 'Eco Abdominal',
+        'category': 'Imagenología',
+        'description': 'Ecografía médica de alta definición para exploración de órganos abdominales y pélvicos.',
+        'estimated_cost': 70.00,
+        'icon': 'Activity'
+    },
+    {
+        'id': 103,
+        'name': 'Rayos X',
+        'category': 'Radiología',
+        'description': 'Estudios radiológicos digitales de tórax, columna, tórax y extremidades con informe médico.',
+        'estimated_cost': 50.00,
+        'icon': 'FileSearch'
+    },
+    {
+        'id': 104,
+        'name': 'Electromiografía',
+        'category': 'Neurofisiología',
+        'description': 'Estudio neurofisiológico de conducción nerviosa y actividad muscular electromiográfica.',
+        'estimated_cost': 120.00,
+        'icon': 'Zap'
+    }
+]
+
+
 def specialties_view(request):
-    specialties = Specialty.objects.all().order_by('-is_featured', 'name')
-    data = [{
-        'id': s.id,
-        'name': s.name,
-        'description': s.description,
-        'icon': s.icon,
-        'is_featured': s.is_featured
-    } for s in specialties]
-    return JsonResponse(data, safe=False)
+    try:
+        specialties = Specialty.objects.all().order_by('-is_featured', 'name')
+        if specialties.exists():
+            data = [{
+                'id': s.id,
+                'name': s.name,
+                'description': s.description,
+                'icon': s.icon,
+                'is_featured': s.is_featured
+            } for s in specialties]
+            return JsonResponse(data, safe=False)
+    except Exception:
+        pass
+    return JsonResponse(DEFAULT_SPECIALTIES, safe=False)
+
+
+def services_view(request):
+    return JsonResponse(DEFAULT_SERVICES, safe=False)
+
 
 
 def clinics_view(request):
@@ -240,14 +317,14 @@ def create_request_view(request):
 
     data = request.POST
     patient_id = data.get('patient_id')
-    clinic_id = data.get('clinic_id')
-    doctor_id = data.get('doctor_id')
-    specialty_id = data.get('specialty_id')
+    clinic_id = data.get('clinic_id') or 1
+    doctor_id = data.get('doctor_id') or 1
+    specialty_id = data.get('specialty_id') or 1
     procedure_name = data.get('procedure_name')
     requested_amount = data.get('requested_amount')
 
-    if not all([patient_id, clinic_id, doctor_id, specialty_id, procedure_name, requested_amount]):
-        return JsonResponse({'error': 'Por favor complete todos los campos obligatorios del procedimiento.'}, status=400)
+    if not patient_id or not procedure_name or not requested_amount:
+        return JsonResponse({'error': 'Por favor complete todos los campos obligatorios del procedimiento o estudio.'}, status=400)
 
     try:
         num_requested = float(requested_amount)
