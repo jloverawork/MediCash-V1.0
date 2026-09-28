@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+package-lock.json
+venv/
+__pycache__/
+*.pyc
+
+# Build outputs
+dist/
+build/
+.expo/
+.expo-shared/
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# IDE and System files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Server Uploads & DB
+server/uploads/*
+!server/uploads/.gitkeep
+*.sqlite3
+db.sqlite3
+
+
