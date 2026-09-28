@@ -1,4 +1,4 @@
-# 🏥 MediCash v1.0 — Sistema de Financiamiento Médico Quirúrgico
+# 🏥 MediCash v1.0 — Sistema de Financiamiento Médico
 
 **MediCash** es una solución integral para el financiamiento médico en cuotas y directorio de salud en Venezuela. Permite a pacientes solicitar crédito para cirugías, tratamientos complejos y exámenes diagnósticos, mientras brinda a la administración un panel completo para la evaluación médica, aprobación de solicitudes y control de mora de cuotas.
 
