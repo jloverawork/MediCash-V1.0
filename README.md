@@ -163,11 +163,6 @@ Todas las cuentas de prueba tienen asignada la **misma contraseña universal**:
 - **Carlos Mendoza:** `carlos.mendoza@gmail.com` | `Test2026!`
 - **Elena Salazar:** `elena.salazar@gmail.com` | `Test2026!`
 
-### 👨‍⚕️ Médicos Especialistas (`DOCTOR`)
-- **Dr. Alejandro Ramos:** `alejandro.ramos@medicash.com` | `Test2026!`
-- **Dra. Sofía Valenzuela:** `sofia.valenzuela@medicash.com` | `Test2026!`
-- **Dr. Ricardo Betancourt:** `ricardo.betancourt@medicash.com` | `Test2026!`
-
 ---
 
 ## ✨ Funcionalidades Principales
